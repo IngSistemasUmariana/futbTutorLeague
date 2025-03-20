@@ -1,7 +1,20 @@
 import { useState, useEffect } from 'react';
 
+type Team = {
+  name: string;
+  logo: string;
+  pts: number;
+  pj: number;
+  pg: number;
+  gf: number;
+  gc: number;
+  color: string;
+  dg?: number;
+  pos?: number;
+};
+
 export const Leaderboard = () => {
-  const [isDark, setIsDark] = useState(() => {
+  const [isDark, setIsDark] = useState<boolean>(() => {
     return localStorage.getItem('theme') === 'dark';
   });
 
@@ -15,8 +28,7 @@ export const Leaderboard = () => {
     }
   }, [isDark]);
 
-  // 📝 Nuevas estadísticas: gf = goles a favor, gc = goles en contra, pg = partidos ganados
-  const rawTeams = [
+  const rawTeams: Team[] = [
     { name: "Docentes FC", logo: "./teachers.png", pts: 0, pj: 1, pg: 0, gf: 6, gc: 7, color: "border-gray-300" },
     { name: "Furia FC", logo: "./furia.png", pts: 0, pj: 0, pg: 0, gf: 0, gc: 0, color: "border-gray-300" },
     { name: "Insanos FC", logo: "./insanos.png", pts: 0, pj: 0, pg: 0, gf: 0, gc: 0, color: "border-gray-300" },
@@ -29,13 +41,12 @@ export const Leaderboard = () => {
     { name: "404 Not Found", logo: "./404notfound.png", pts: 0, pj: 0, pg: 0, gf: 0, gc: 0, color: "border-gray-300" },
   ];
 
-  // 💻 Calculamos DG = GF - GC y ordenamos
   const sortedTeams = rawTeams
     .map(team => ({
       ...team,
       dg: team.gf - team.gc,
     }))
-    .sort((a, b) => b.pts - a.pts || b.dg - a.dg)
+    .sort((a, b) => b.pts - a.pts || b.dg! - a.dg!)
     .map((team, index) => ({ ...team, pos: index + 1 }));
 
   return (
@@ -92,17 +103,6 @@ export const Leaderboard = () => {
           </div>
         ))}
       </div>
-
-      {/* Tailwind animation */}
-      <style jsx>{`
-        @keyframes fade-in {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-          animation: fade-in 0.5s ease forwards;
-        }
-      `}</style>
     </>
   );
 };
