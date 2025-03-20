@@ -5,20 +5,17 @@ import { Navbar } from "./components/Navbar";
 import { Sponsors } from "./components/Sponsors";
 import { MatchCard } from "./components/MatchCard";
 import "./App.css";
-import { useRef } from 'react';
 
 function App() {
-  const scrollRef = useRef(null);
   const matches = [
     {
       date: 'Martes, 18 de marzo',
       time: '9:00',
       team1: { name: 'Futboleros', logo: './futboleros.png' },
-      team2: { name: 'Teacher ', logo: './teachers.png' },
+      team2: { name: 'Teacher', logo: './teachers.png' },
       score1: 7,
       score2: 6,
     },
-    
     {
       date: 'Viernes, 21 de marzo',
       time: '11:00',
@@ -52,63 +49,19 @@ function App() {
       score2: null,
     },
   ];
-  
-  const scrollLeft = () => {
-    scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
-  };
 
-  const scrollRight = () => {
-    scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
-  };
-
-  
   return (
     <>
-    
       <Navbar />
-      <div className="relative p-6 bg-black">
-      {/* Flechas */}
-      <button
-        onClick={scrollLeft}
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white rounded-full p-2 hover:bg-gray-600 z-10"
-      >
-        ←
-      </button>
-
-      <button
-        onClick={scrollRight}
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white rounded-full p-2 hover:bg-gray-600 z-10"
-      >
-        →
-      </button>
-
-      {/* Carrusel */}
-      <div
-        ref={scrollRef}
-        className="flex overflow-x-auto no-scrollbar scroll-smooth"
-        style={{ scrollBehavior: 'smooth' }}
-      >
+      <div className="p-6 bg-black flex flex-wrap justify-center gap-4">
         {matches.map((match, index) => (
           <MatchCard key={index} {...match} />
         ))}
       </div>
-
-      {/* Estilo para ocultar scrollbar */}
-      <style jsx>{`
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
-    </div>
-
       <Hero />
       <Sponsors />
       <About />
-      <Footer/>
+      <Footer />
     </>
   );
 }
