@@ -41,8 +41,8 @@ function App() {
       score2: null,
     },
     {
-      date: 'Viernes, 28 de marzo',
-      time: '15:00',
+      date: 'Jueves, 27 de marzo',
+      time: '13:00',
       team1: { name: 'Atletico Netbeans', logo: './atleticNetbans.png' },
       team2: { name: 'Furia FC', logo: './furia.png' },
       score1: null,
