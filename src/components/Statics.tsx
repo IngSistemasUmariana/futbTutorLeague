@@ -4,11 +4,11 @@ export const Statistics = () => {
   const topPlayers = [
     {
       role: "MVP",
-      jornada: 1,
-      name: "Miguel Enriquez",
+      jornada: 2,
+      name: "Uknown",
       team: "Futboleros",
       img: "./player.png",
-      logo: "./futboleros.png",
+      logo: "./player.png",
     },
     {
       role: "MÁXIMO GOLEADOR",
@@ -40,11 +40,11 @@ export const Statistics = () => {
     },
     {
       title: "TARJETAS",
-      name: "Ninguno",
+      name: "Estiven Ceron",
       team: "Ninguno",
-      statLabel: ["🟨", "🟥"],
-      statValue: [0, 0],
-      logo: "./vite.svg",
+      statLabel: ["🟨", "🟥 Azul"],
+      statValue: [0, 1],
+      logo: "./furia.png",
       img: "./player.png",
     },
   ];
