@@ -50,8 +50,8 @@ function App() {
       score2: 2,
     },*/ 
     {
-      date: "Fecha ❓",
-      time: "❓",
+      date: "Fecha 1 : Hoy ",
+      time: "10:00",
       team1: { name: "404 NF ", logo: "./404notfound.png" },
       team2: { name: "Real Makari", logo: "./RealMakari.png" },
       score1: null,
